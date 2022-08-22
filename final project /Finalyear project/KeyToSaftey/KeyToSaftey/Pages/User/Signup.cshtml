@@ -1,0 +1,76 @@
+﻿@page
+@model KeyToSaftey.Pages.User.SignupModel
+
+@{
+    ViewData["Title"] = "Signup";
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+<script type="text/javascript" src="../assets/js/jquery/jquery-1.10.1.min.js"></script>
+
+
+<div class="container main-container headerOffset">
+
+    <div class="row">
+        <div class="breadcrumbDiv col-lg-12">
+            <ul class="breadcrumb">
+                <li><a href="Index">Home</a></li>
+                <li class="active"> Authentication</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-9 col-md-9 col-sm-7">
+            <h1 class="section-title-inner"><span><i class="fa fa-lock"></i> Authentication</span></h1>
+
+            <div class="row userInfo">
+
+                <div class="col-xs-12 col-sm-6">
+                    <h2 class="block-title-2"> Create an account </h2>
+
+                    <form role="form" class="regForm" method="post">
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" asp-for="Signup.FullName" value="" placeholder="Full Name">
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" asp-for="Signup.Mobile" value="" placeholder="Mobile">
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" asp-for="Signup.Email" value="" placeholder="Email ID">
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" asp-for="Signup.City" value="" placeholder="City">
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input type="password" class="form-control" asp-for="Signup.Password" value="" placeholder="Password">
+                        </div>
+                        <div class="col-md-12 form-group">
+
+                            <button type="submit" class="btn   btn-primary">
+                                <i class="fa fa-user"></i> Create an account
+                            </button>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+            <!--/row end-->
+
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-5"></div>
+    </div>
+    <!--/row-->
+
+
+    <button type="submit" class="btn   btn-primary">
+        <a asp-page="Index">Back to List</a>
+
+    </button>
+
+
+    <div style="clear:both"></div>
+</div>

@@ -1,0 +1,108 @@
+﻿@page
+@model KeyToSaftey.Pages.User.BlogdetailsModel
+
+@{
+    ViewData["Title"] = "Blogdetails";
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+
+<section class="blog-intro parallaxOffset parallaxbg">
+    <img src="~/images/blog/b2.jpg" style="   background-image: url('file:///D:\Finalyear project\KeyToSaftey\KeyToSaftey\wwwroot\images\b2.jpg');
+        background-size: cover" width="1200" height="600" />
+
+    <div class="overlay-shade"></div>
+    <div class="background-overly g6"></div>
+</section>
+<div class="gap"></div>
+<div class="blog-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-centered blog-left">
+                <div class="bl-inner">
+                    <div class="item-blog-post">
+                        <div class="post-header clearfix">
+
+                            <h2 class="fadeInDown  wow" data-wow-duration="0.2s" data-wow-delay=".5s">
+                                @Html.DisplayFor(model => model.Blog.Bname)
+                            </h2>
+
+                            <div class="post-info">
+                                by <span><a class="userBy"> @Html.DisplayFor(model => model.Blog.Bauthor).</a></span> on
+                                <span> @Html.DisplayFor(model => model.Blog.Date)</span>
+
+
+                            </div>
+                        </div>
+                        <div class="post-main-view">
+                            <div class="post-lead-image wow  fadeIn  " data-wow-duration="0.2s" data-wow-delay=".6s">
+
+                                <div style="text-align:center">
+
+                                    @{
+                                        byte[] bytes = Model.Blog.Bimage;
+                                        string base64String = "data:image/jpg;base64," + Convert.ToBase64String(bytes, 0, bytes.Length);
+
+                                    }
+                                    <img src="@base64String" class="img-responsive" alt="G" />
+
+                                </div>
+                            </div>
+                            <div class="post-description wow  fadeIn  " data-wow-duration="0.2s" data-wow-delay=".1s">
+
+
+
+                                <p>
+                                    @Html.Raw(Model.Blog.Bpara)
+                                </p>
+
+
+
+                                <p>
+                                    @Html.Raw(Model.Blog.Bdetails)
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--/.item-blog-post-->
+
+                    <div class="RecommendedBlog clearfix text-center">
+                        <div class="h2 RecommendedTitle">Recommended</div>
+                        <div class="row">
+
+                            @foreach (var item1 in Model.Blogs)
+                            {
+
+                                <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+                                    <div class="blog-rc-item">
+                                        <a href="./ABlogdetails">
+
+                                            <div class="rcimg" style="text-align:center">
+
+                                                @{
+                                                    byte[] bytes1 = item1.Bimage;
+                                                    string base64String1 = "data:image/jpg;base64," + Convert.ToBase64String(bytes1, 0, bytes1.Length);
+
+                                                }
+                                                <img src="@base64String1" class="img-responsive" alt="img" />
+
+                                            </div>
+
+                                            <span class="h4"> @Html.DisplayFor(modelItem => item1.Bname)</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gap"></div>

@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext "Data Source=.\sqlexpress;Initial Catalog=KeyToSaftey;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer  -OutputDir DBModels -f

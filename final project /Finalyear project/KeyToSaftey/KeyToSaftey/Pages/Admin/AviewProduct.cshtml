@@ -1,0 +1,96 @@
+﻿@page
+@model KeyToSaftey.Pages.Admin.AviewProductModel
+
+@{
+    ViewData["Title"] = "AviewProduct";
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+<script type="text/javascript" src="../assets/js/jquery/jquery-1.10.1.min.js"></script>
+
+<div  class="container main-container headerOffset globalPaddingBottom">
+    <div class="row">
+        <h1 style="text-align:center; font-weight:bold">All Products</h1>
+
+        <p class="btn bg-info">
+            <a asp-page="AddProduct">Create New</a>
+        </p>
+        <p class="btn bg-info">
+            <a asp-page="ABlogList">BlogList</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="text-align:center">
+                        Id
+                        @*@Html.DisplayNameFor(model => model.Product[0].Pname)*@
+                    </th>
+                    <th style="text-align:center">
+                        Product Name
+                        @*@Html.DisplayNameFor(model => model.Product[0].Pname)*@
+                    </th>
+                    <th style="text-align:center">
+                        Description
+                        @*@Html.DisplayNameFor(model => model.Product[0].Pdes)*@
+                    </th>
+                    <th style="text-align:center">
+                        @Html.DisplayNameFor(model => model.Product[0].Catagory)
+                    </th>
+                    <th style="text-align:center">
+                        Image
+                        @*@Html.DisplayNameFor(model => model.Product[0].Pimg)*@
+                    </th>
+                    <th style="text-align:center">
+                        Quantity
+                        @*@Html.DisplayNameFor(model => model.Product[0].Pprice)*@
+                    </th>
+                    <th style="text-align:center">
+                        Price
+                        @*@Html.DisplayNameFor(model => model.Product[0].Pprice)*@
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Product)
+                {
+                    <tr>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Pid)
+                        </td>
+                        <td class="col-md-2">
+                            @Html.DisplayFor(modelItem => item.Pname)
+                        </td>
+                        <td class="col-md-4" style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Pdes)
+                        </td>
+                        <td style="text-align:center" class="col-sm-1">
+                            @Html.DisplayFor(modelItem => item.Catagory)
+                        </td>
+                        <td style="text-align:center">
+                            <div>
+                                @{
+                                    byte[] bytes = item.Pimg;
+                                    string base64String = "data:image/jpg;base64," + Convert.ToBase64String(bytes, 0, bytes.Length);
+
+                                }
+                                <img src="@base64String" width="100" height="100" />
+                            </div>
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Qnt)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Pprice)
+                        </td>
+                        <td style="text-align:center">
+                            <a asp-page="./ProductUpdate" asp-route-id="@item.Pid">Edit</a> |
+                            <a asp-page="./ASingleProduct" asp-route-id="@item.Pid">Details</a> |
+                            <a asp-page="./ProductDelete" asp-route-id="@item.Pid">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,158 @@
+﻿@page
+@model KeyToSaftey.Pages.User.SenitizerLIstModel
+
+@{
+    ViewData["Title"] = "SenitizerLIst";
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+<script type="text/javascript" src="../assets/js/jquery/jquery-1.10.1.min.js"></script>
+
+<div class="container main-container headerOffset">
+
+    <!-- Main component call to action -->
+
+    <div class="row">
+        <div class="breadcrumbDiv col-lg-12">
+            <ul class="breadcrumb">
+                <li><a href="Index">Home</a></li>
+                <li class="active"> Sanitizer </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.row  -->
+
+    <div class="row">
+
+        <!--left column-->
+
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="panel-group" id="accordionNo">
+                <!--Category-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapseCategory"
+                               class="collapseWill active ">
+                                <span class="pull-left"> <i class="fa fa-caret-right"></i></span> Category
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseCategory" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked tree">
+                                <li><a href="MaskList" ><span class="badge pull-right"></span> Mask </a></li>
+                                <li><a href="HandGlovesList"> <span class="badge pull-right"></span> Hand Gloves</a></li>
+                                <li><a href="FaceShieldList"> <span class="badge pull-right"></span> Face Shield </a></li>
+                                <li class="active dropdown-tree open-tree"><a href="SenitizerList" class="dropdown-tree-a"> <span class="badge pull-right"></span> Senitizer </a></li>
+                                <li><a href="HandwashList"> <span class="badge pull-right"></span> Handwash </a></li>
+                                <li><a href="PPEKitList"> <span class="badge pull-right"></span> PPE Kit </a></li>
+                                <li><a href="OximeterList"> <span class="badge pull-right"></span> Oximeter </a></li>
+                                <li><a href="TempGunList"> <span class="badge pull-right"></span> Temperature Cheker </a></li>
+                                <li><a href="VaperizerList"> <span class="badge pull-right"></span> Vaperizer </a></li>
+                                <li><a href="#"> <span class="badge pull-right"></span> Medicines </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--right column-->
+        <div class="col-lg-9 col-md-9 col-sm-12">
+            <div class="w100 clearfix category-top">
+                <h2> Sanitizer </h2>
+
+                <div class="categoryImage">
+                    <img src="~/images/look3/index19.jpg" class="img-responsive" alt="img" />
+                </div>
+            </div>
+            <!--/.category-top-->
+
+            <div class="gap"></div>
+
+
+
+
+            <!--/.productFilter-->
+            <div class="row  categoryProduct xsResponse clearfix">
+                @foreach (var item in Model.Products)
+                {
+                    if (item.Catagory == "senitizer")
+                    {
+                        <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6">
+                            <div class="product">
+                                <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
+                                   data-placement="left">
+                                    <i class="glyphicon glyphicon-heart"></i>
+                                </a>
+
+                                <div class="image">
+                                    <a href="SingleProduct?id=@item.Pid">
+                                        <div>
+                                            @{
+                                                byte[] bytes = item.Pimg;
+                                                string base64String = "data:image/jpg;base64," + Convert.ToBase64String(bytes, 0, bytes.Length);
+
+                                            }
+                                            <img src="@base64String" alt="img" class="img-responsive" />
+                                        </div>
+                                    </a>
+
+
+                                </div>
+                                <div class="description">
+                                    <h4><a href="SingleProduct?id=@item.Pid"> @Html.DisplayFor(modelItem => item.Pname)</a></h4>
+
+                                    <div class="grid-description">
+                                        <p>@Html.DisplayFor(modelItem => item.Pdes)</p>
+                                    </div>
+
+
+                                </div>
+                                <div class="price"><span>₹@Html.DisplayFor(modelItem => item.Pprice)</span></div>
+                                <div class="action-control">
+                                    <a href="SingleProduct?id=@item.Pid" class="btn btn-primary">
+                                        <span class="add2cart">
+                                            <i class="glyphicon glyphicon-shopping-cart"> </i> BUY
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.item-->
+                    }
+
+                }
+
+                <div class="gap"></div>
+                <div class="gap"></div>
+                <a href="webscrapping?id=senitizer">
+                    <h1 class=" text-left border-title" style="text-align:center;font-weight:bold"> View Similar Products On Flipkart </h1>
+                </a>
+                <div class="gap"></div>
+                <div class="gap"></div>
+
+            </div>
+            <!--/.categoryProduct || product content end-->
+            <!--/.categoryFooter-->
+        </div>
+        <!--/right column end-->
+    </div>
+    <!-- /.row  -->
+</div>
+<!-- /main container -->
+
+<div class="gap"></div>
+
+<!-- Product Details Modal  -->
+<div class="modal fade" id="productSetailsModalAjax" tabindex="-1" role="dialog"
+     aria-labelledby="productSetailsModalAjaxLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

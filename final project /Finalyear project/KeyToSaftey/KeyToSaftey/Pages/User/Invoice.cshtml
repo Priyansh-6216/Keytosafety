@@ -1,0 +1,147 @@
+﻿@page
+@model KeyToSaftey.Pages.User.InvoiceModel
+
+@{
+    ViewData["Title"] = "Invoice";
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+<script type="text/javascript" src="../assets/js/jquery/jquery-1.10.1.min.js"></script>
+
+<script type="text/javascript">
+    function PrintDiv() {
+        var divContents = document.getElementById("printdivcontent").innerHTML;
+        var printWindow = window.open('', '', 'height=1000,width=800');
+        printWindow.document.write('<html><head><title>Print DIV Content</title>');
+        printWindow.document.write('</head><body >');
+        printWindow.document.write(divContents);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+</script>
+
+
+
+<h2>Invoice</h2>
+
+<link href="~/assets/css/invoice.css" rel="stylesheet" type="text/css" />
+<div id="printdivcontent">
+    <div class="container bootstrap snippets bootdeys">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default invoice" id="invoice">
+                    <div class="panel-body">
+                        <div class="invoice-ribbon"><div class="ribbon-inner">PAID</div></div>
+                        <div class="row">
+
+                            <div class="col-sm-6 top-left">
+                                <i class="fa fa-rocket"></i>
+                                <p style="font-size:xx-large"> Key To Safety </p>
+                            </div>
+                            <div class="col-sm-6 top-right">
+                                <br />
+                                <h3 class="marginright" style="font-weight:bold">INVOICE-1234578</h3>
+                                <span class="marginright">HII</span>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+
+                            <div class="col-xs-4 from">
+                                <p class="lead marginbottom" style="font-weight:bold">TO : @Html.DisplayFor(model => model.Ordermaster.) </p>
+                                <p>350 Rhode Island Street</p>
+                                <p>Suite 240, San Francisco</p>
+                                <p>California, 94103</p>
+                                <p>Phone:  +918780492590 </p>
+                                <p>Email: keytosafety3@gmail.com</p>
+                            </div>
+
+                            <div class="col-xs-4 to">
+
+
+                            </div>
+
+                            <div class="col-xs-4 text-right payment-details">
+                                <p class="lead marginbottom payment-info" style="font-weight:bold">Payment details</p>
+                                <p>Date: 14 April 2014</p>
+                                <p>VAT: DK888-777 </p>
+                                <p>Total Amount: ₹1019</p>
+                                <p>Account Name: Flatter</p>
+                            </div>
+
+                        </div>
+
+                        <div class="row table-row">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width:5%">Id</th>
+                                        <th style="width:50%">Product</th>
+                                        <th class="text-right" style="width:15%">Quantity</th>
+                                        <th class="text-right" style="width:15%">Unit Price</th>
+                                        <th class="text-right" style="width:15%">Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model.Addtocart)
+                                    {
+                                        <tr>
+                                            <td class="text-center">@Html.DisplayFor(modelItem => item.Pid)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Pname)</td>
+                                            <td class="text-right">@Html.DisplayFor(modelItem => item.Quantity)</td>
+                                            <td class="text-right">₹@Html.DisplayFor(modelItem => item.Pprice)</td>
+                                            <td class="text-right">₹@Html.DisplayFor(modelItem => item.Price)</td>
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-xs-6 text-right pull-right invoice-total" style="font-weight:bold">
+                                <table class="col-xs-6 text-right pull-right">
+                                    <tr>
+                                        <td>Subtotal : </td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td>₹@Model.Addtocart.Sum(i => i.Price)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Discount (0%) : </td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td> ₹0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VAT (0%) :</td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td> ₹0 </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total : </td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td>₹@Model.Addtocart.Sum(i => i.Price)</td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-6 margintop">
+    <p class="lead marginbottom" style="font-weight:bold">THANK YOU!</p>
+
+    <button class="btn btn-success" id="invoice-print" onclick="PrintDiv();"><i class="fa fa-print"></i> Print Invoice</button>
+    <button class="btn btn-danger"><i class="fa fa-envelope-o"></i> Mail Invoice</button>
+</div>

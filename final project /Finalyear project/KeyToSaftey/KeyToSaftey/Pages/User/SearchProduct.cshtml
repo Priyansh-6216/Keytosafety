@@ -1,0 +1,62 @@
+﻿@page
+@model KeyToSaftey.Pages.User.SearchProductModel
+
+@{
+    ViewData["Title"] = "SearchProduct";
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+<script type="text/javascript" src="../assets/js/jquery/jquery-1.10.1.min.js"></script>
+
+<div class="row  categoryProduct xsResponse clearfix">
+
+    <h1 style="text-align:center; font-weight:bold">Searched Products</h1>
+
+    @foreach (var item in Model.Product)
+    {
+
+        <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6">
+            <div class="product" style="height: 450px;">
+                <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
+                   data-placement="left">
+                    <i class="glyphicon glyphicon-heart"></i>
+                </a>
+
+                <div class="image">
+                    <a href="SingleProduct?id=@item.Pid">
+                        <div>
+                            @{
+                                byte[] bytes = item.Pimg;
+                                string base64String = "data:image/jpg;base64," + Convert.ToBase64String(bytes, 0, bytes.Length);
+
+                            }
+                            <img src="@base64String" height="240" width="180" alt="img" class="img-responsive" />
+                        </div>
+                    </a>
+
+
+                </div>
+                <div class="description">
+                    <h4><a href="SingleProduct?id=@item.Pid"> @Html.DisplayFor(modelItem => item.Pname)</a></h4>
+
+                    <div class="grid-description" >
+                        <p>@Html.DisplayFor(modelItem => item.Pdes)</p>
+                    </div>
+
+
+                </div>
+                <div class="price"><span>₹@Html.DisplayFor(modelItem => item.Pprice)</span></div>
+                <div class="action-control">
+                    <a href="SingleProduct?id=@item.Pid" class="btn btn-primary">
+                        <span class="add2cart">
+                            <i class="glyphicon glyphicon-shopping-cart"> </i> BUY
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--/.item-->
+
+    }
+
+</div>
+

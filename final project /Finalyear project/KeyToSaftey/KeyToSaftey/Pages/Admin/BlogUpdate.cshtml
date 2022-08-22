@@ -1,0 +1,87 @@
+﻿@page
+@model KeyToSaftey.Pages.Admin.BlogUpdateModel
+
+@{
+    ViewData["Title"] = "BlogUpdate";
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+
+
+<link href="~/css/main.css" rel="stylesheet" />
+<link href="~/css/widgEditor.css" rel="stylesheet" />
+<link href="~/css/info.css" rel="stylesheet" />
+<script src="/scripts/widgEditor.js"></script>
+
+<div class="container main-container headerOffset globalPaddingBottom">
+    
+    <h1 style="text-align:center; font-weight:bold">Update Product</h1>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-7">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Blog.Bid" />
+                    <input type="hidden" asp-for="Blog.Bimage" />
+                    <div class="form-group">
+                        <label asp-for="Blog.Date" class="control-label">Blog Date</label>
+                        <input asp-for="Blog.Date" class="form-control" />
+                        <span asp-validation-for="Blog.Date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Blog.Bname" class="control-label">Blog Name</label>
+                        <input asp-for="Blog.Bname" class="form-control" />
+                        <span asp-validation-for="Blog.Bname" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        @{
+                            byte[] bytes = Model.Blog.Bimage;
+                            string base64String = "data:image/jpg;base64," + Convert.ToBase64String(bytes, 0, bytes.Length);
+
+                        }
+                        <img src="@base64String" width="100" height="100" />
+                    </div>
+                    <div class="form-group">
+
+                        <input type="file" asp-for="Blog.Bimage" class="form-control" />
+                        <span asp-validation-for="Blog.Bimage" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Blog.Bauthor" class="control-label">Blog Author</label>
+                        <input asp-for="Blog.Bauthor" class="form-control" />
+                        <span asp-validation-for="Blog.Bauthor" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Blog.Bstatus" class="control-label">Blog Status</label>
+                        <input asp-for="Blog.Bstatus" class="form-control" />
+                        <span asp-validation-for="Blog.Bstatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Blog.Bpara" class="control-label">Blog Details</label>
+                        <input asp-for="Blog.Bpara" class="form-control" />
+                        <span asp-validation-for="Blog.Bpara" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <fieldset>
+                            <label for="noise">
+                                Description:
+                            </label>
+                            <textarea asp-for="Blog.Bdetails" class="widgEditor nothing">
+                                    &lt;p&gt;widgEditor &lt;strong&gt;automatically&lt;/strong&gt; 
+                                    integrates the content that was in the textarea!&lt;/p&gt;
+                            </textarea>
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                    <div class="btn btn-default" style="color:blue">
+                        <a asp-page="./ABlogList">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

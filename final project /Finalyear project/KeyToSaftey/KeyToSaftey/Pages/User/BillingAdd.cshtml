@@ -1,0 +1,234 @@
+﻿@page
+@model KeyToSaftey.Pages.User.BillingAddModel
+
+@{
+    ViewData["Title"] = "BillingAdd";
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+
+<script>
+
+    function calc() {
+        if (document.getElementById('checkboxes1').checked) {
+
+            alert("@Model.Ordermaster.Firstname");
+            document.getElementById("BillingAdd_Firstname").value ="@Model.Ordermaster.Firstname";
+            document.getElementById("BillingAdd_Lastname").value = "@Model.Ordermaster.Lastname";
+            document.getElementById("BillingAdd_Email").value = "@Model.Ordermaster.Email";
+            document.getElementById("BillingAdd_Addressline01").value ="@Model.Ordermaster.Addressline01";
+            document.getElementById("BillingAdd_Addressline02").value = "@Model.Ordermaster.Adressline02";
+            document.getElementById("BillingAdd_Pincode").value = "@Model.Ordermaster.Pincode";
+            document.getElementById("BillingAdd_City").value = "@Model.Ordermaster.City";
+            document.getElementById("BillingAdd_District").value ="@Model.Ordermaster.State";
+            document.getElementById("BillingAdd_Country").value ="@Model.Ordermaster.Country";
+            document.getElementById("BillingAdd_Mobile").value = "@Model.Ordermaster.Mobile";
+
+        } else {
+             document.getElementById("BillingAdd_Firstname").value ="";
+            document.getElementById("BillingAdd_Lastname").value = "";
+            document.getElementById("BillingAdd_Country").value = "";
+            document.getElementById("BillingAdd_District").value ="";
+            document.getElementById("BillingAdd_City").value = "";
+            document.getElementById("BillingAdd_Mobile").value = "";
+            document.getElementById("BillingAdd_Pincode").value = "";
+            document.getElementById("BillingAdd_Addressline01").value = "";
+            document.getElementById("BillingAdd_Addressline02").value = "";
+            document.getElementById("BillingAdd_Email").value = "";
+
+        }
+    }
+
+</script>
+
+<div class="container main-container headerOffset">
+    <div class="row">
+        <div class="breadcrumbDiv col-lg-12">
+            <ul class="breadcrumb">
+                <li><a href="Index">Home</a></li>
+                <li><a href="Cart">Cart</a></li>
+                <li class="active"> Checkout</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6 col-xxs-12 text-center-xs">
+            <h1 class="section-title-inner"><span><i class="glyphicon glyphicon-shopping-cart"></i> Checkout</span></h1>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar col-xs-6 col-xxs-12 text-center-xs">
+            <h4 class="caps"><a href="Index"><i class="fa fa-chevron-left"></i> Back to shopping </a></h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12">
+            <div class="row userInfo">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="w100 clearfix">
+                        <ul class="orderStep orderStepLook2">
+                            <li>
+                                <a href="Address">
+                                    <i class="fa fa-map-marker "></i> <span> address</span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="BillingAdd">
+                                    <i class="fa fa fa-envelope  "></i>
+                                    <span> Billing </span>
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="FinalOrder"><i class="fa fa-check-square "> </i><span>Order</span></a>
+                            </li>
+                            <li><a href="Invoice"><i class="fa fa-money  "> </i><span>Invoice</span> </a></li>
+                        </ul>
+                        <!--/.orderStep end-->
+                    </div>
+
+
+
+                    <form method="post">
+    <div class="w100 clearfix">
+        <div class="row userInfo">
+            <div class="col-lg-12">
+                <h2 class="block-title-2">
+                    To add a billing address, please fill out the form
+                    below.
+                </h2>
+            </div>
+
+            <div class="col-xs-12 col-sm-12">
+                <label class="checkbox-inline" for="checkboxes1">
+                    <input name="checkboxes1" style="position: unset;" id="checkboxes1" value="1" type="checkbox" onclick="calc();">
+                    My delivery and billing addresses are the same.
+                </label>
+                <hr>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group required">
+                    <label for="InputName">First Name <sup>*</sup> </label>
+                    <input required type="text" asp-for="BillingAdd.Firstname" class="form-control"
+                           placeholder="First Name">
+                </div>
+                <div class="form-group required">
+                    <label for="InputLastName">Last Name <sup>*</sup> </label>
+                    <input required type="text" asp-for="BillingAdd.Lastname" class="form-control"
+                           placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">Email </label>
+                    <input type="text" asp-for="BillingAdd.Email" class="form-control" placeholder="Email">
+                </div>
+
+                <div class="form-group required">
+                    <label for="InputAddress">Address <sup>*</sup> </label>
+                    <input required type="text" asp-for="BillingAdd.Addressline01" class="form-control"
+                           placeholder="Address">
+                </div>
+                <div class="form-group">
+                    <label for="InputAddress2">Address (Line 2) </label>
+                    <input type="text" asp-for="BillingAdd.Addressline02" class="form-control" placeholder="Address">
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group required">
+                    <label for="InputZip">Zip / Postal Code <sup>*</sup> </label>
+                    <input required type="text" asp-for="BillingAdd.Pincode" class="form-control"
+                           placeholder="Zip / Postal Code">
+                </div>
+                <div class="form-group required">
+                    <label for="InputCity">City <sup>*</sup> </label>
+                    <input required type="text" asp-for="BillingAdd.City" class="form-control" placeholder="City">
+                </div>
+                <div class="form-group required">
+                    <label for="InputState">State <sup>*</sup> </label>
+                    <input required type="text" asp-for="BillingAdd.District" class="form-control"
+                           placeholder="State">
+                </div>
+                <div class="form-group required">
+                    <label for="InputCountry">Country <sup>*</sup> </label>
+                    <input required type="text" asp-for="BillingAdd.Country" class="form-control"
+                           placeholder="Country">
+                </div>
+
+                <div class="form-group required">
+                    <label for="InputMobile">Mobile phone <sup>*</sup></label>
+                    <input required type="tel" asp-for="BillingAdd.Mobile" class="form-control">
+                </div>
+
+            </div>
+        </div>
+                    <!--/row end-->
+                    </div>
+    <div class="cartFooter w100">
+        <div class="box-footer">
+
+            <div class="pull-left">
+                <a class="btn btn-default" href="Address">
+                    <i class="fa fa-arrow-left"></i>
+                    &nbsp; Shipping address
+                </a>
+            </div>
+
+            <div class="pull-right">
+                <input type="submit" class="btn btn-primary btn-small" value=" Final Order"  />
+                <i class="fa fa-arrow-circle-right"></i>
+
+            </div>
+        </div>
+    </div>
+    </form>
+                    <!--/ cartFooter -->
+
+                </div>
+            </div>
+            <!--/row end-->
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 rightSidebar">
+            <div class="w100 cartMiniTable">
+                <table id="cart-summary" class="std table">
+                    <tbody>
+                        <tr>
+                            <td>Total products</td>
+                            <td class="price">@Model.Addtocart.Sum(i => i.Price)</td>
+                        </tr>
+                        <tr style="">
+                            <td>Shipping</td>
+                            <td class="price"><span class="success">Free shipping!</span></td>
+                        </tr>
+                        <tr class="cart-total-price ">
+                            <td>Total (tax excl.)</td>
+                            <td class="price">@Model.Addtocart.Sum(i => i.Price)</td>
+                        </tr>
+                        <tr>
+                            <td>Total tax</td>
+                            <td class="price" id="total-tax">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td> Total</td>
+                            <td class=" site-color" id="total-price">@Model.Addtocart.Sum(i => i.Price)</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!--  /cartMiniTable-->
+
+        </div>
+        <!--/rightSidebar-->
+
+    </div>
+    <!--/row-->
+
+    <div style="clear:both"></div>
+</div>
+<!-- /main-container-->
+
+<div class="gap"></div>

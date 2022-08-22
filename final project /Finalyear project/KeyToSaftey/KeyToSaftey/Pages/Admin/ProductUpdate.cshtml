@@ -1,0 +1,73 @@
+﻿@page
+@model KeyToSaftey.Pages.Admin.ProductUpdateModel
+
+@{
+    ViewData["Title"] = "ProductUpdate";
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+
+<div class="container main-container headerOffset globalPaddingBottom">
+    
+        <h1 style="text-align:center; font-weight:bold">Update Product</h1>
+
+        <div class="form-group">
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <form class="form-group" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Product.Pid" />
+                    <input type="hidden" asp-for="Product.Pimg" />
+                    <div class="form-group">
+                        <label asp-for="Product.Pname" class="control-label">Product Name</label>
+                        <input asp-for="Product.Pname" class="form-control" />
+                        <span asp-validation-for="Product.Pname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Product.Pdes" class="control-label">Description</label>
+                        <input asp-for="Product.Pdes" class="form-control" />
+                        <span asp-validation-for="Product.Pdes" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Product.Catagory" class="control-label">Category</label>
+                        <input asp-for="Product.Catagory" class="form-control" />
+                        <span asp-validation-for="Product.Catagory" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        @{
+                            byte[] bytes = Model.Product.Pimg;
+                            string base64String = "data:image/jpg;base64," + Convert.ToBase64String(bytes, 0, bytes.Length);
+
+                        }
+                        <img src="@base64String" width="100" height="100" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <input type="file" asp-for="Product.Pimg" class="form-control" multiple="multiple" />
+                        <span asp-validation-for="Product.Pimg" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Product.Qnt" class="control-label">Quntity</label>
+                        <input asp-for="Product.Qnt" class="form-control" />
+                        <span asp-validation-for="Product.Qnt" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Product.Pprice" class="control-label">Price</label>
+                        <input asp-for="Product.Pprice" class="form-control" />
+                        <span asp-validation-for="Product.Pprice" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                    <div class="btn btn-default" style="color:blue">
+                        <a asp-page="./AviewProduct">Back to List</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+</div>
+        
+

@@ -1,0 +1,127 @@
+﻿@page
+@model KeyToSaftey.Pages.User.ContectUsModel
+@{
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+
+ 
+<script>
+    function show() {
+        alert("Feedback sent successfully");
+    }
+</script>
+    
+    <div class="container main-container headerOffset">
+        <div class="container main-container ">
+            <div class="row innerPage">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+
+                    <div class="row userInfo">
+
+                        <div class="col-xs-12 col-sm-12">
+
+                            <h1 class="title-big text-center section-title-style2">
+                                <span> Contact us </span>
+                            </h1>
+
+                            <p class="lead text-center">
+                               ahiya su lakhu a khbar nati pan edit karvu hoy to line 30 per che.
+                            </p>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <h3 class="block-title-5">
+                                        Customer care
+                                    </h3>
+                                    <p>
+                                        If You have issue with product then you can call this number 
+                                        <br>
+                                        <strong>
+                                            Phone number
+                                        </strong>
+                                        : +91-9726738678
+                                        <br>
+                                        <strong>
+                                            Email us
+                                        </strong>
+                                        : keytosafety3@gmail.com
+                                    </p>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <h3 class="block-title-5">
+                                        Complaint
+                                    </h3>
+                                    <p>
+                                        If You want to contact any of complain then you can call this number
+                                        <br>
+                                        <strong>
+                                            Phone number
+                                        </strong>
+                                        : +91-9726738678                                        
+                                        <br>
+                                        <strong>
+                                            Email us
+                                        </strong>
+                                        : keytosafety3@gmail.com
+                                    </p>
+                                </div>
+                                <div style="clear:both"></div>
+                                <hr>
+                                <div style="clear:both"></div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <h3 class="block-title-5">
+                                        Feedback
+                                    </h3>
+                                    <p>
+                                        Please give us some feedback or anyother suggesion for product or any foe the website then you can call on this
+                                        <email>
+                                            keytosafety3@gmail.com
+                                        </email>
+                                        <br>
+                                        <strong>
+                                            Email us
+                                        </strong>
+                                        : keytosafety3@gmail.com
+                                    </p>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <h3 class="block-title-5">
+                                        Text Feedback
+                                    </h3>
+                                    <form method="post">
+                                        <div class="row">
+                                            <div class="col-25">
+                                                <label for="feed_back">Feed Back</label>
+                                            </div>
+                                            <div class="col-75">
+                                                <input type="text" placeholder="Wrie your feed back" asp-for="Feedback.Text" style="height:200px; width:500px" />
+                                                <input type="text" placeholder="First Name" asp-for="Feedback.Lname" />
+                                                <input type="text" placeholder="Last Name" asp-for="Feedback.Fname"  />
+                                                <input type="text" placeholder="Mobile" asp-for="Feedback.Mobile"  />
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <input type="submit" value="Submit" onclick="show()">
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                            <!--/.row-->
+                        </div>
+                    </div>
+                    <!--/.row  ||  -->
+                </div>
+            </div>
+            <!--/row || innerPage end-->
+            <div style="clear:both"></div>
+        </div>
+        <!-- ./main-container -->
+        <div class="gap"></div>
+    </div>
+

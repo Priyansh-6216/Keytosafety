@@ -1,0 +1,66 @@
+﻿@page
+@model KeyToSaftey.Pages.Admin.AddProductModel
+
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+
+
+<div class="container main-container headerOffset globalPaddingBottom">
+    <div class="row">
+        <h1 style="text-align:center; font-weight:bold">Add Product</h1>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    <form method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Product.Pid" class="control-label">Product ID</label>
+                            <input asp-for="Product.Pid" class="form-control" />
+                            <span asp-validation-for="Product.Pid" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Product.Pname" class="control-label">Product Name</label>
+                            <input asp-for="Product.Pname" class="form-control" />
+                            <span asp-validation-for="Product.Pname" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Product.Pdes" class="control-label">Description</label>
+                            <input asp-for="Product.Pdes" class="form-control" />
+                            <span asp-validation-for="Product.Pdes" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Product.Catagory" class="control-label">Category</label>
+                            <input asp-for="Product.Catagory" class="form-control" />
+                            <span asp-validation-for="Product.Catagory" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Product.Pimg" class="control-label">Product Image</label>
+                            <input type="file" asp-for="Product.Pimg" class="form-control" multiple="multiple" />
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Product.Pprice" class="control-label">Price</label>
+                            <input asp-for="Product.Pprice" class="form-control" />
+                            <span asp-validation-for="Product.Pprice" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Product.Qnt" class="control-label">Quantity</label>
+                            <input asp-for="Product.Qnt" class="form-control" />
+                            <span asp-validation-for="Product.Qnt" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-default" style="color:blue" />
+                        </div>
+                        <div class="btn btn-default" style="color:blue">
+                            <a asp-page="AviewProduct" >Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            
+        </div>
+</div>

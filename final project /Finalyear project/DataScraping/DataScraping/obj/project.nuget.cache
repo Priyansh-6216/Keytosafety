@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KqT2HC+uXCU33o7jEdEm3cRjJSVcVppP33wwEHXyG/wPZztBbllHjNAxgum+rV5bLihTIWBcBnuXBAVoQ9N0lg==",
+  "success": true,
+  "projectFilePath": "D:\\Finalyear project\\DataScraping\\DataScraping\\DataScraping.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lenovo\\.nuget\\packages\\htmlagilitypack\\1.11.32\\htmlagilitypack.1.11.32.nupkg.sha512"
+  ],
+  "logs": []
+}
